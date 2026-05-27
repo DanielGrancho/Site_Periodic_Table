@@ -273,4 +273,14 @@
   color: var(--text-muted);
   letter-spacing: 1px;
 }
+/* Garante que o dimmed escurece mesmo tudo */
+.el.dimmed {
+  opacity: 0.15 !important;
+  pointer-events: none; /* Impede que passes o rato neles e apareça o tooltip */
+}
 
+/* Regra para as setas desaparecerem */
+.arrow.hidden {
+  opacity: 0 !important;
+  visibility: hidden;
+}

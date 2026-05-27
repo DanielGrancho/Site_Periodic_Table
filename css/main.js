@@ -23,18 +23,31 @@ const catLabels = {
 // Filter
 const filterBtns = document.querySelectorAll('.filter-btn');
 const elements = document.querySelectorAll('.el[data-cat]');
+const arrows = document.querySelectorAll('.arrow'); // Selecionamos também as setas
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const filter = btn.dataset.filter;
+
+    // Controlar Elementos (incluindo Lantanídeos e Actinídeos)
     elements.forEach(el => {
       if (filter === 'all' || el.dataset.cat === filter) {
         el.classList.remove('dimmed');
       } else {
         el.classList.add('dimmed');
       }
+    });
+
+    // Controlar Setas (só aparecem se filtro for all ou a categoria específica)
+    arrows.forEach(arrow => {
+        // Se filtro for all, mostra as setas. Se for uma categoria, esconde-as.
+        if (filter === 'all') {
+            arrow.style.opacity = '1';
+        } else {
+            arrow.style.opacity = '0';
+        }
     });
   });
 });
